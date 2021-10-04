@@ -1,0 +1,209 @@
+<html>
+
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+  <style>
+    .list-top {
+      font-weight: bold;
+      font-size: 18;
+      margin-bottom: 0;
+    }
+
+    .list-item {
+      font-size: 16;
+      margin-bottom: 5px;
+      padding-top: 5px;
+      border-top: 1px groove;
+    }
+
+    .bg-custom {
+      background-image: linear-gradient(#3408F7, #00ffff);
+    }
+
+    .nav-btn {
+      color: #ffffff;
+      font-size: 16;
+    }
+
+    #body-bg {
+      background-color: #E5ECEB;
+    }
+
+    #user-username {
+      margin: 0;
+      color: #ffffff;
+      font-size: 16;
+    }
+
+    #title {
+      font-weight: bold;
+    }
+
+    #body-content {
+      margin-top: 10px;
+      height: 100%;
+      width: 100%;
+    }
+
+    #error {
+      color: #ff0000;
+      font-weight: bolder;
+      font-size: 18;
+      padding-top: 10px;
+    }
+  </style>
+</head>
+
+<body class="body-bg">
+  <div class="jumbotron jumbotron-fluid mb-0 bg-custom">
+    <div class="container">
+      <h1 id="title" class="display-4">Senior Project</h1>
+    </div>
+  </div>
+
+  <div class="navbar navbar-light bg-dark">
+    <ul class="nav">
+      <li class="nav-item">
+        <a href="#" id="register-btn" class="nav-link nav-btn unauthenticated-content">Register</a>
+      </li>
+    </ul>
+    <div class="ml-auto">
+      <p class="nav-item" id="user-username" class="navbar-text"></p>
+    </div>
+  </div>
+
+  <div id="body-content" class="container">
+    <p id="error"></p>
+  </div>
+
+  <div id="register-modal" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 id="register-modal-title" class="modal-title">Register</h5>
+          <button type="button" class="close" data-dismiss="modal" area-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form class="border border-primary p-3">
+            <div class="form-group">
+              <input id="username" type="text" class="form-control" placeholder="Username">
+            </div>
+            <div class="form-group">
+              <input id="email" type="text" class="form-control" placeholder="Email">
+            </div>
+            <div class="form-group">
+              <input id="password" type="password" class="form-control" placeholder="Password">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button id="confirm-register-btn" type="button" class="btn btn-primary">Register</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    $(document).ready(function() {
+      let model;
+
+      function initializeModel() {
+        model = {};
+
+        model.game = {};
+        model.game.error = undefined;
+
+        model.user = undefined;
+      }
+
+      function sendRequest(url) {
+        let jqxhr = $.get(url);
+
+        jqxhr.done(function(json) {
+          model.game.error = json.error;
+          model.user = json.user;
+          updateView();
+        });
+        jqxhr.fail(function(json) {
+          model.game.error = json.error;
+          updateView();
+        });
+      }
+
+      function updateView() {
+        console.log(model);
+        $("#error").hide();
+
+        if (model.game.error !== undefined) {
+          $(".authenticated-content").hide();
+          $(".unauthenticated-content").show();
+
+          $("#error").text(model.game.error);
+          $("#error").show();
+        } else {
+          if (model.user != undefined) {
+            $(".unauthenticated-content").hide();
+            $(".authenticated-content").show();
+
+            $("#user-username").text(`Welcome ${model.user.username}`);
+
+          } else {
+            $(".authenticated-content").hide();
+            $(".unauthenticated-content").show();
+
+            $("#error").text("Please log in to continue.");
+            $("#error").show();
+          }
+        }
+      }
+
+      function makeAuthenticationRequest(path) {
+        let email = $("#email").val();
+        let password = $("#password").val();
+        let username = $("#username").val();
+
+        let url = path + "?username=" + username + "&email=" + email + "&password=" + password;
+
+        sendRequest(url);
+
+        $("#email").val("");
+        $("#password").val("");
+        $("#username").val("");
+
+        $("#register-modal").modal("hide");
+      }
+
+      $("#register-btn").click(function() {
+        $("#email").val("");
+        $("#password").val("");
+        $("#username").val("");
+
+        $("#register-modal").modal("show");
+        $("#email").focus();
+
+        $("#password").off("keypress").on("keypress", function(e) {
+          if (e.which == 13) {
+            makeAuthenticationRequest("register");
+          }
+        });
+      });
+
+      $("#confirm-register-btn").click(function() {
+        makeAuthenticationRequest("register");
+      });
+
+      initializeModel();
+      sendRequest("whoIsLoggedIn");
+    });
+  </script>
+</body>
+
+</html>
