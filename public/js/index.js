@@ -197,7 +197,6 @@ rock.addEventListener("click", function () {
   if (canChoose && myChoice === "" && playerOneConnected && playerTwoIsConnected) {
     myChoice = "rock";
     choose(myChoice);
-    console.log('player' + playerId + " picked " + myChoice);
     socket.emit("make-move-multiplayer", { playerId, myChoice, roomId });
   }
 })
@@ -206,7 +205,6 @@ paper.addEventListener("click", function () {
   if (canChoose && myChoice === "" && playerOneConnected && playerTwoIsConnected) {
     myChoice = "paper";
     choose(myChoice);
-    console.log('player' + playerId + " picked " + myChoice);
     socket.emit("make-move-multiplayer", { playerId, myChoice, roomId });
   }
 })
@@ -215,7 +213,6 @@ scissor.addEventListener("click", function () {
   if (canChoose && myChoice === "" && playerOneConnected && playerTwoIsConnected) {
     myChoice = "scissor";
     choose(myChoice);
-    console.log('player' + playerId + " picked " + myChoice);
     socket.emit("make-move-multiplayer", { playerId, myChoice, roomId });
   }
 })
@@ -406,7 +403,6 @@ socket.on('user.login.error', ({ error }) => {
 })
 
 socket.on('user.stats.success', ({ stats }) => {
-  console.log(stats);
   let entry = `<tr><td>${stats[0].totalGames}</td><td>${stats[0].singleplayerWins}</td><td>${stats[0].singleplayerLosses}</td><td>${stats[0].multiplayerWins}</td><td>${stats[0].multiplayerLosses}</td></tr>`
   statsContent.innerHTML = entry;
 })
@@ -533,15 +529,13 @@ function removeChoice(choice) {
 function setWinningMessage(message) {
   let p = document.createElement("p");
   p.innerText = message;
-  console.log(gamemode);
-  console.log(message);
 
   if (gamemode == "multiplayer") {
     winMessage.appendChild(p);
     setTimeout(() => {
       removeChoice(myChoice)
       winMessage.innerHTML = "";
-    }, 2500)
+    }, 2000)
 
     if (isGameOver == true) {
       $("#multiplayer-modal").modal({ backdrop: "static", keyboard: false });
@@ -554,7 +548,7 @@ function setWinningMessage(message) {
       setTimeout(() => {
         socket.emit("exit-room");
         $("#multiplayer-modal").modal("hide");
-      }, 2500)
+      }, 4500)
     }
 
   } else {
@@ -563,7 +557,7 @@ function setWinningMessage(message) {
     setTimeout(() => {
       removeChoice(myChoice)
       singleplayerWinMessage.innerHTML = "";
-    }, 2500)
+    }, 2000)
     if (isGameOver == true) {
       $("#singleplayer-modal").modal({ backdrop: "static", keyboard: false });
       singleplayerGameResult.innerHTML = `Gameover, you ${gameResult}!`;

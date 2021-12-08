@@ -1,3 +1,4 @@
+/* Document CSS */
 * {
     margin: 0;
     padding: 0;
@@ -5,120 +6,277 @@
 }
 
 body {
-  background: #060E1C;
+    background: #060e1cfa;
 }
 
-.login-box,
-.register-box,
-.start-screen,
-.mode-screen,
-.multiplayer-screen,
-.create-room-box,
-.modal,
-.stats-screen,
-.login-screen {
-    display: none;
-}
-
-.stats-table {
-  color: white;
-  font-size: 20px;
-}
-
-.login-screen,
-.stats-screen {
-  margin-top: 15px;
-}
-
-.login-screen button,
-.mode-screen button,
-.start-screen button {
-  margin: 10px;
-}
-
-.message-after-choice-selection {
-  margin: 0;
-  color: white;
-}
-
-.modal-body {
-  background: #060E1C;
-  color: white;
-}
-
+/* Universal Styling */
 .bg-image-full {
     background-size: cover;
     background-repeat: no-repeat;
     background-image: url('/images/background.png');
     border-top: solid black;
     border-bottom: solid black;
-}
-
-.page-footer {
-    height: 20%;
-    background:rgba(0, 0, 0, 0.73);
+    color: white;
 }
 
 .bg-custom {
-  background-color: #B321FF;
+    background-color: #8c00f9;
 }
 
 .bg-custom-dark {
-  background-color: #7013a2;
+    background-color: #060e1cfa;
 }
 
-.title {
-  font-size: 30px;
-  font-family: 'Asap', sans-serif;
-  font-family: 'Balsamiq Sans', cursive; 
-  color: white;
-}
-
-.welcome-message {
-  color: white;
-  margin-bottom: 0;
-  text-align: right;
-  margin-right: 10px;
-  font-family: 'Asap', sans-serif;
-  font-family: 'Balsamiq Sans', cursive; 
+.error {
+    color: white;
 }
 
 .bg-black {
     background: rgba(0, 0, 0, 0.73);
 }
 
-.slide:hover,
-.slide:focus {
-  box-shadow: inset 6.5em 0 0 0 var(--hover);
+.screen-title {
+    color: white;
+    font-size: 4rem;
+    margin-top: 1%;
+    margin-bottom: 2%;
+    text-align: center;
 }
 
-.join-with-id,
-.create-room-box {
-    width: 70%;
-    margin: 0 auto;
+/* Header */
+.welcome-message {
+    font-size: 18px;
+    color: white;
+    margin-bottom: 0;
+    text-align: right;
+    margin-right: 5%;
+    font-family: 'Asap', sans-serif;
+    font-family: 'Balsamiq Sans', cursive;
 }
 
-.join-with-id .cancel-action,
-.create-room-box .cancel-action,
-.register-box .cancel-action,
-.login-box .cancel-action {
-    width: 80%;
+/* Login Screen */
+.login-screen {
+    width: 20%;
     display: block;
-    margin: 0 auto;
-    margin-top: 20px;
-    background: #ccc;
-    color: #333;
 }
 
-.cancel-action:hover {
-    background: #ddd !important;
+.authentication-choices button {
+    padding: 10px !important;
+    margin-right: 20px !important;
+    color: white;
+    width: 100%;
+    margin-top: 20px !important;
+}
+
+.register-box,
+.login-box {
+    display: none;
+}
+
+.register-box button,
+.login-box button {
+    padding: 8px !important;
+    margin-top: 3% !important;
+    color: white;
+}
+
+.login-form input,
+.register-form input {
+    border: solid black;
+    margin-top: 10px !important;
+    padding: 10px !important;
+}
+
+/* Mode Screen*/
+.mode-screen {
+    display: none;
+    width: 20%;
+}
+
+.mode-screen button {
+    padding: 10px !important;
+    margin-right: 20px !important;
+    color: white;
+    width: 100%;
+    margin-top: 20px !important;
+}
+
+/* General Game Styling */
+.choices {
+    width: 20%;
+    transition: all .7s ease-in !important;
+    margin-bottom: 3%;
+}
+
+.choice {
+    font-size: 4rem;
+    color: #8c00f9;
+    display: inline-block !important;
+    padding: 20px !important;
+}
+
+.choice-name {
+    font-size: 2rem;
+}
+
+.choice:last-child {
+    margin-right: 0;
+}
+
+.choice:hover {
+    cursor: pointer;
+    transform: scale(1.3);
+}
+
+.score {
+    padding: 30px;
+    margin-bottom: 3%;
+}
+
+.score>span {
+    font-weight: bold;
+    background: #060e1cfa;
+    color: white;
+    padding: 10px !important;
+    border: solid black;
+}
+
+.score span#score {
+    font-weight: normal;
+}
+
+.score>span:first-child {
+    margin-bottom: 20px;
+}
+
+.message-after-choice-selection {
+    margin: 0;
+    color: white;
+}
+
+.message-after-choice-selection p {
+    text-align: center;
+    font-size: 1.4rem;
+}
+
+/* Singleplayer Screen*/
+.singleplayer-screen {
+    display: none;
+}
+
+.singleplayer-footer {
+    position: absolute;
+    top: 80%;
+}
+
+.singleplayer-footer button {
+    width: 5%;
+}
+
+/* Stats Screen */
+.stats-screen {
+    display: none;
+}
+
+.stats-table {
+    color: white;
+    font-size: 20px;
+    border: black solid;
+    margin-bottom: 5%;
+}
+
+.stats-table-foot{
+    margin-left: 25%;
+    margin-right: 25%;
+    text-align: center;
+}
+
+/* Modal */
+.modal {
+    display: none;
+}
+
+.modal-body {
+    background: #060E1C;
+    color: white;
+}
+
+/* Multiplayer */
+.multiplayer-screen {
+    display: none;
+}
+
+.start-screen {
+    display: none;
+    width: 20%;
+}
+
+.join-room-box,
+.create-room-box {
+    display: none;
+}
+
+.join-room-box button,
+.create-room-box button {
+    width: 50%;
+    margin-bottom: 1%;
+}
+
+.join-room-box input,
+.create-room-box input {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 3%;
+}
+
+.join-room-box-foot,
+.create-room-box-foot {
+    position: fixed;
+    right: 0%;
+    top: 50%;
+    width: 100%;
+}
+
+.join-room-box-foot button,
+.create-room-box-foot button{
+    width: 10%;
+}
+
+.error-message {
+    width: 100%;
+    margin-top: 5%;
+    display: none;
+    background: rgb(209, 61, 61);
+    color: white;
+    padding: 20px;
+    margin-bottom: 0px;
+}
+
+.error-message p {
+    text-align: center;
+    font-size: 1.1rem;
+    color: white;
+}
+
+.my-choice {
+    color: rgb(81, 0, 128);
+}
+
+.enemy-choice {
+    color: red;
+}
+
+.gameplay-choices button {
+    padding: 10px !important;
+    margin-right: 20px !important;
+    color: white;
+    width: 100%;
+    margin-top: 20px !important;
 }
 
 .wait-message {
-    width: 600px;
-    padding-top: 30px;
-    margin: 0 auto;
-    margin-bottom: 30px;
+    position: fixed;
+    top: 70%;
     color: white;
 }
 
@@ -127,9 +285,9 @@ body {
 }
 
 .connected-players {
-    width: 500px;
+    position: fixed;
+    top: 75%;
     display: flex;
-    margin: 0 auto;
     justify-content: center;
     align-items: center;
     margin-bottom: 80px;
@@ -156,96 +314,4 @@ body {
 
 .connected-players .player:first-child {
     margin-right: 30px;
-}
-
-.choices {
-    transition: all .7s ease-in;
-}
-
-.choice {
-    font-size: 5rem;
-    color: #B321FF;
-}
-
-.choice:last-child {
-    margin-right: 0;
-}
-
-.choice:hover {
-    cursor: pointer;
-    transform: scale(1.3);
-}
-
-.score {
-    padding: 30px;
-}
-
-.score>span {
-    font-weight: bold;
-    background: #7013a2;
-    color: white;
-    padding: 10px;
-}
-
-.score span#score {
-    font-weight: normal;
-}
-
-.score>span:first-child {
-    margin-bottom: 20px;
-}
-
-.message-after-choice-selection {
-    width: 80%;
-    margin: 0 auto;
-    margin-top: 60px;
-}
-
-.message-after-choice-selection p {
-    text-align: center;
-    font-size: 1.2rem;
-}
-
-.join-room-box {
-    display: none;
-}
-
-.join-room-box .join-random {
-    width: 80%;
-    display: block;
-    margin: 0 auto;
-    height: 35px;
-    background: #189116;
-    color: white;
-    outline: none;
-    border: none;
-    margin-top: 30px;
-}
-
-.error {
-  color: white;
-}
-
-.error-message {
-    width: 500px;
-    margin: 0 auto;
-    margin-top: 40px;
-    display: none;
-    background: rgb(209, 61, 61);
-    color: white;
-    padding: 20px;
-}
-
-.error-message p {
-    text-align: center;
-    font-size: 1.1rem;
-    color: white;
-}
-
-.my-choice {
-    color: rgb(81, 0, 128);
-}
-
-.enemy-choice {
-    color: red;
 }

@@ -16,193 +16,189 @@
 
 <body>
   <header class="bg-image-full">
-    <div class="text-center my-1">
+    <div class="text-center" style="background-color: rgba(0, 0, 0, 0.2)">
       <img class="img-fluid rounded-circle mb-4" height="150px" width="150px" src="images/logo.png" alt="..." />
       <h1 class="title">Rock Paper Scissors</h1>
       <p class="welcome-message" id="welcome-message">Please login to play</p>
     </div>
   </header>
 
-  <section class="main-content">
-
-    <div class="login-screen container">
-      <div class="row justify-content-center align-items-center">
-        <div class="col-lg-6 text-center">
-          <div class="authentication-choices" id="authentication-choices">
-            <button type="button" class="btn btn-dark btn-lg bg-custom" id="open-login-box">Login</button>
-            <button type="button" class="btn btn-dark btn-lg bg-custom" id="open-register-box">Register</button>
-          </div>
-          <div class="register-box" id="register-box">
-            <form>
-              <div class="form-group">
-                <input type="text" class="form-control" id="register-username" placeholder="Username">
-                <input type="email" class="form-control" id="register-email" placeholder="Email">
-                <input type="password" class="form-control" id="register-password" placeholder="Password">
-                <button type="button" class="btn btn-dark bg-custom" id="register-cancel-btn">Cancel</button>
-                <button type="button" class="btn btn-dark bg-custom" id="confirm-register-btn">Confirm</button>
-                <div class="error" id="register-error"></div>
-              </div>
-            </form>
-          </div>
-          <div class="login-box" id="login-box">
-            <div class="form-group">
-              <input type="email" class="form-control" id="login-email" placeholder="Email">
-              <input type="password" class="form-control" id="login-password" placeholder="Password">
-              <button type="button" class="btn btn-dark bg-custom" id="login-cancel-btn">Cancel</button>
-              <button type="button" class="btn btn-dark bg-custom" id="confirm-login-btn">Confirm</button>
-              <div class="error" id="login-error"></div>
-            </div>
-          </div>
+  <div class="container-fluid login-screen">
+    <div class="row">
+      <div class="col authentication-choices" id="authentication-choices">
+        <button type="button" class="btn btn-dark btn-lg bg-custom" id="open-login-box">Login</button>
+        <div class="w-100 d-none d-md-block"></div>
+        <button type="button" class="btn btn-dark btn-lg bg-custom" id="open-register-box">Register</button>
+      </div>
+      <div class="col register-box text-center" id="register-box">
+        <div class="col screen-title">Register</div>
+        <div class="register-form form-group">
+          <input type="text" class="form-control" id="register-username" placeholder="Username">
+          <input type="email" class="form-control" id="register-email" placeholder="Email">
+          <input type="password" class="form-control" id="register-password" placeholder="Password">
+          <button type="button" class="btn btn-dark bg-custom" id="register-cancel-btn">Cancel</button>
+          <button type="button" class="btn btn-dark bg-custom" id="confirm-register-btn">Confirm</button>
         </div>
+        <div class="error" id="register-error"></div>
+      </div>
+      <div class="col login-box text-center" id="login-box">
+        <div class="col screen-title">Login</div>
+        <div class="login-form form-group">
+          <input type="email" class="form-control" id="login-email" placeholder="Email">
+          <input type="password" class="form-control" id="login-password" placeholder="Password">
+          <button type="button" class="btn btn-dark bg-custom" id="login-cancel-btn">Cancel</button>
+          <button type="button" class="btn btn-dark bg-custom" id="confirm-login-btn">Confirm</button>
+        </div>
+        <div class="error" id="login-error"></div>
       </div>
     </div>
+  </div>
 
-    <div class="mode-screen">
-      <div class="container">
-        <div class="row">
-          <div class="col">
-            <button type="button" class="btn btn-dark btn-lg bg-custom" id="singleplayer-btn">Play
-              Singleplayer</button>
-            <button type="button" class="btn btn-dark btn-lg bg-custom" id="multiplayer-btn">Play
-              Multiplayer</button>
-            <button type="button" class="btn btn-dark btn-lg bg-custom" id="stats-btn">Statistics</button>
-          </div>
-        </div>
+  <div class="container-fluid mode-screen justify-content-center">
+    <div class="row">
+      <div class="col">
+        <button type="button" class="btn btn-dark btn-lg bg-custom" id="singleplayer-btn">Play
+          Singleplayer</button>
+        <button type="button" class="btn btn-dark btn-lg bg-custom" id="multiplayer-btn">Play
+          Multiplayer</button>
+        <button type="button" class="btn btn-dark btn-lg bg-custom" id="stats-btn">Statistics</button>
       </div>
     </div>
+  </div>
 
-    <div class="stats-screen">
-      <table class="table stats-table">
-        <thead>
-          <tr>
-            <th scope="col">Total Games</th>
-            <th scope="col">Singleplayer Wins</th>
-            <th scope="col">Singleplayer Losses</th>
-            <th scope="col">Multiplayer Wins</th>
-            <th scope="col">Multiplayer Losses</th>
-          </tr>
-        </thead>
-        <tbody id="stats-content"></tbody>
-      </table>
-      <button type="button" class="btn btn-dark btn-lg bg-custom" id="stats-leave-btn">Back</button>
-    </div>
-
-    <div class="start-screen">
-      <div class="gameplay-choices" id="gameplay-choices">
-        <div class="container">
-          <div class="row">
-            <div class="col">
-              <button type="button" class="btn btn-dark btn-lg bg-custom" id="open-create-room-box">Create
-                Room</button>
-              <button type="button" class="btn btn-dark btn-lg bg-custom" id="open-join-room-box">Join
-                Room</button>
-              <button type="button" class="btn btn-dark btn-lg bg-custom" id="gameplay-choices-back-btn">Back</button>
-            </div>
-          </div>
-        </div>
+  <div class="container stats-screen">
+    <div class="row">
+      <div class="col">
+        <div class="col screen-title">User Stats</div>
+        <table class="table bg-custom-dark stats-table">
+          <thead>
+            <tr>
+              <th scope="col">Total Games</th>
+              <th scope="col">Singleplayer Wins</th>
+              <th scope="col">Singleplayer Losses</th>
+              <th scope="col">Multiplayer Wins</th>
+              <th scope="col">Multiplayer Losses</th>
+            </tr>
+          </thead>
+          <tbody id="stats-content"></tbody>
+        </table>
       </div>
-      <div class="container">
-        <div class="row">
-          <div class="col">
-            <div class="create-room-box" id="create-room-box">
-              <input type="text" id="room-id"><button type="button" class="btn btn-dark btn-sm bg-custom"
-                id="create-room-btn">Create</button>
-              <button type="button" class="btn btn-dark btn-lg bg-custom" id="cancel-create-action"
-                class="cancel-action">Cancel</button>
-              <div class="error-message" id="create-room-error-message"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="container">
-        <div class="row">
-          <div class="col">
-            <div class="join-room-box" id="join-room-box">
-              <div class="join-with-id">
-                <input type="text" id="join-room-input"><button type="button" class="btn btn-dark btn-sm bg-custom"
-                  id="join-room-btn">Join</button>
-                <button type="button" class="btn btn-dark btn-sm bg-custom" id="join-random">Join Random</button>
-              </div>
-              <button type="button" class="btn btn-dark btn-lg bg-custom" id="cancel-join-action"
-                class="cancel-action">Cancel</button>
-              <div class="error-message" id="join-room-error-message"></div>
-            </div>
-          </div>
-        </div>
+      <div class="col stats-table-foot">
+        <button type="button" class="btn btn-dark btn-lg bg-custom" id="stats-leave-btn">Back</button>
       </div>
     </div>
+  </div>
 
-    <div class="singleplayer-screen container-fluid">
+  <div class="container-fluid start-screen">
+    <div class="row">
+      <div class="col gameplay-choices" id="gameplay-choices">
+        <button type="button" class="btn btn-dark btn-lg bg-custom" id="open-create-room-box">Create
+          Room</button>
+        <button type="button" class="btn btn-dark btn-lg bg-custom" id="open-join-room-box">Join
+          Room</button>
+        <button type="button" class="btn btn-dark btn-lg bg-custom" id="gameplay-choices-back-btn">Back</button>
+      </div>
 
-      <div class="score row justify-content-center align-items-center">
-        <div class="col">
-          <span>You: <span id="singleplayer-my-score">0</span></span>
-          <span>Computer: <span id="singleplayer-enemy-score">0</span></span>
+      <div class="col create-room-box text-center" id="create-room-box">
+        <div class="col screen-title">Create a Room</div>
+        <div class="w-100 d-none d-md-block"></div>
+        <input type="text" id="room-id" placeholder="Enter room name here..."><button type="button"
+          class="btn btn-dark btn-sm bg-custom" id="create-room-btn">Create</button>
+        <div class="w-100 d-none d-md-block"></div>
+        <div class="error-message" id="create-room-error-message"></div>
+        <div class="w-100 d-none d-md-block"></div>
+        <div class="col create-room-box-foot text-center">
+          <button type="button" class="btn btn-cancel btn-dark bg-custom" id="cancel-create-action">Cancel</button>
         </div>
       </div>
 
-      <div class="row justify-content-center align-items-center">
-        <div class="choices col-12">
-          <div class="choice" id="singleplayer-rock">
-            <i class="fas fa-hand-rock"></i>
-          </div>
-          <div class="choice" id="singleplayer-paper">
-            <i class="fas fa-hand-paper"></i>
-          </div>
-          <div class="choice" id="singleplayer-scissor">
-            <i class="fas fa-hand-scissors"></i>
-          </div>
+      <div class="col join-room-box text-center" id="join-room-box">
+        <div class="col screen-title">Join a Room</div>
+        <div class="w-100 d-none d-md-block"></div>
+        <div class="join-with-id">
+          <input type="text" id="join-room-input" placeholder="Enter room name here..."><button type="button"
+            class="btn btn-dark btn-sm bg-custom" id="join-room-btn">Join</button>
+          <button type="button" class="btn btn-dark btn-sm bg-custom" id="join-random">Join Random</button>
+        </div>
+        <div class="w-100 d-none d-md-block"></div>
+        <div class="error-message" id="join-room-error-message"></div>
+        <div class="w-100 d-none d-md-block"></div>
+        <div class="col join-room-box-foot text-center">
+          <button type="button" class="btn btn-dark bg-custom" id="cancel-join-action">Cancel</button>
         </div>
       </div>
 
-      <div class="message-after-choice-selection" id="singleplayer-win-message">
-      </div>
+    </div>
+  </div>
 
-      <div class="singleplayer-footer">
+  <div class="container-fluid singleplayer-screen">
+    <div class="row">
+      <div class="col screen-title">Singleplayer</div>
+      <div class="w-100 d-none d-md-block"></div>
+      <div class="col score text-center">
+        <span>You: <span id="singleplayer-my-score">0</span></span>
+        <span>Computer: <span id="singleplayer-enemy-score">0</span></span>
+      </div>
+      <div class="w-100 d-none d-md-block"></div>
+      <div class="col choices text-center">
+        <div class="choice" id="singleplayer-rock">
+          <i class="fas fa-hand-rock"></i>
+        </div>
+        <div class="choice" id="singleplayer-paper">
+          <i class="fas fa-hand-paper"></i>
+        </div>
+        <div class="choice" id="singleplayer-scissor">
+          <i class="fas fa-hand-scissors"></i>
+        </div>
+      </div>
+      <div class="w-100 d-none d-md-block"></div>
+      <div class="col message-after-choice-selection text-center" id="singleplayer-win-message">
+      </div>
+      <div class="w-100 d-none d-md-block"></div>
+      <div class="col singleplayer-footer text-center">
         <button type="button" class="btn btn-dark bg-custom" id="singleplayer-exit-btn">Exit</button>
       </div>
-
     </div>
+  </div>
 
-    <div class="multiplayer-screen">
-      <div class="wait-message" id="wait-message">
-        <p>Waiting for another player to join...</p>
-      </div>
-
-      <div class="connected-players">
-        <div class="player">
-          <span class="dot" id="player-1"></span> <span id="player-1-tag"></span>
-        </div>
-
-        <div class="player">
-          <span class="dot" id="player-2"></span> <span id="player-2-tag"></span>
-        </div>
-      </div>
-
-      <div class="score">
+  <div class="container-fluid multiplayer-screen">
+    <div class="row">
+      <div class="col screen-title">Multiplayer</div>
+      <div class="w-100 d-none d-md-block"></div>
+      <div class="col score text-center">
         <span>You: <span id="my-score">0</span></span>
         <span>Enemy: <span id="enemy-score">0</span></span>
       </div>
-
-      <div class="choices">
+      <div class="w-100 d-none d-md-block"></div>
+      <div class="col choices text-center">
         <div class="choice" id="rock">
           <i class="fas fa-hand-rock"></i>
         </div>
-
         <div class="choice" id="paper">
           <i class="fas fa-hand-paper"></i>
         </div>
-
         <div class="choice" id="scissor">
           <i class="fas fa-hand-scissors"></i>
         </div>
       </div>
-
-      <div class="message-after-choice-selection" id="win-message">
+      <div class="w-100 d-none d-md-block"></div>
+      <div class="col message-after-choice-selection text-center" id="win-message">
+      </div>
+      <div class="w-100 d-none d-md-block"></div>
+      <div class="col wait-message text-center" id="wait-message">
+        <p>Waiting for another player to join...</p>
+      </div>
+      <div class="w-100 d-none d-md-block"></div>
+      <div class="col connected-players text-center">
+        <div class="player">
+          <span class="dot" id="player-1"></span> <span id="player-1-tag"></span>
+        </div>
+        <div class="player">
+          <span class="dot" id="player-2"></span> <span id="player-2-tag"></span>
+        </div>
       </div>
     </div>
-    
-  </section>
+  </div>
 
   <footer class="bg-image-full fixed-bottom text-center text-lg-start">
     <!-- Copyright -->
@@ -215,7 +211,7 @@
 
   <div id="singleplayer-modal" class="modal fade" data-backdrop="static" tabindex="-1" role="dialog"
     aria-labelledby="singleplayer-modal-label" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header bg-image-full">
           <h5 class="modal-title text-light" id="singleplayer-game-result"></h5>
@@ -232,8 +228,8 @@
   </div>
 
   <div id="multiplayer-modal" class="modal fade" data-backdrop="static" tabindex="-1" role="dialog"
-    aria-labelledby="multiplayer-modal-label" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    aria-labelledby="multiplayer-modal-label " aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header bg-image-full">
           <h5 class="modal-title text-light" id="multiplayer-game-result"></h5>
