@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Asap&family=Balsamiq+Sans&display=swap');
+  </style>
+  <title>Rock Paper Scissors</title>
+</head>
+
+<body>
+  <header class="bg-image-full">
+    <div class="text-center my-1">
+      <img class="img-fluid rounded-circle mb-4" height="150px" width="150px" src="images/logo.png" alt="..." />
+      <h1 class="title">Rock Paper Scissors</h1>
+      <p class="welcome-message" id="welcome-message">Please login to play</p>
+    </div>
+  </header>
+
+  <section class="main-content">
+
+    <div class="login-screen container">
+      <div class="row justify-content-center align-items-center">
+        <div class="col-lg-6 text-center">
+          <div class="authentication-choices" id="authentication-choices">
+            <button type="button" class="btn btn-dark btn-lg bg-custom" id="open-login-box">Login</button>
+            <button type="button" class="btn btn-dark btn-lg bg-custom" id="open-register-box">Register</button>
+          </div>
+          <div class="register-box" id="register-box">
+            <form>
+              <div class="form-group">
+                <input type="text" class="form-control" id="register-username" placeholder="Username">
+                <input type="email" class="form-control" id="register-email" placeholder="Email">
+                <input type="password" class="form-control" id="register-password" placeholder="Password">
+                <button type="button" class="btn btn-dark bg-custom" id="register-cancel-btn">Cancel</button>
+                <button type="button" class="btn btn-dark bg-custom" id="confirm-register-btn">Confirm</button>
+                <div class="error" id="register-error"></div>
+              </div>
+            </form>
+          </div>
+          <div class="login-box" id="login-box">
+            <div class="form-group">
+              <input type="email" class="form-control" id="login-email" placeholder="Email">
+              <input type="password" class="form-control" id="login-password" placeholder="Password">
+              <button type="button" class="btn btn-dark bg-custom" id="login-cancel-btn">Cancel</button>
+              <button type="button" class="btn btn-dark bg-custom" id="confirm-login-btn">Confirm</button>
+              <div class="error" id="login-error"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mode-screen">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <button type="button" class="btn btn-dark btn-lg bg-custom" id="singleplayer-btn">Play
+              Singleplayer</button>
+            <button type="button" class="btn btn-dark btn-lg bg-custom" id="multiplayer-btn">Play
+              Multiplayer</button>
+            <button type="button" class="btn btn-dark btn-lg bg-custom" id="stats-btn">Statistics</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stats-screen">
+      <table class="table stats-table">
+        <thead>
+          <tr>
+            <th scope="col">Total Games</th>
+            <th scope="col">Singleplayer Wins</th>
+            <th scope="col">Singleplayer Losses</th>
+            <th scope="col">Multiplayer Wins</th>
+            <th scope="col">Multiplayer Losses</th>
+          </tr>
+        </thead>
+        <tbody id="stats-content"></tbody>
+      </table>
+      <button type="button" class="btn btn-dark btn-lg bg-custom" id="stats-leave-btn">Back</button>
+    </div>
+
+    <div class="start-screen">
+      <div class="gameplay-choices" id="gameplay-choices">
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <button type="button" class="btn btn-dark btn-lg bg-custom" id="open-create-room-box">Create
+                Room</button>
+              <button type="button" class="btn btn-dark btn-lg bg-custom" id="open-join-room-box">Join
+                Room</button>
+              <button type="button" class="btn btn-dark btn-lg bg-custom" id="gameplay-choices-back-btn">Back</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="create-room-box" id="create-room-box">
+              <input type="text" id="room-id"><button type="button" class="btn btn-dark btn-sm bg-custom"
+                id="create-room-btn">Create</button>
+              <button type="button" class="btn btn-dark btn-lg bg-custom" id="cancel-create-action"
+                class="cancel-action">Cancel</button>
+              <div class="error-message" id="create-room-error-message"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="join-room-box" id="join-room-box">
+              <div class="join-with-id">
+                <input type="text" id="join-room-input"><button type="button" class="btn btn-dark btn-sm bg-custom"
+                  id="join-room-btn">Join</button>
+                <button type="button" class="btn btn-dark btn-sm bg-custom" id="join-random">Join Random</button>
+              </div>
+              <button type="button" class="btn btn-dark btn-lg bg-custom" id="cancel-join-action"
+                class="cancel-action">Cancel</button>
+              <div class="error-message" id="join-room-error-message"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="singleplayer-screen container-fluid">
+
+      <div class="score row justify-content-center align-items-center">
+        <div class="col">
+          <span>You: <span id="singleplayer-my-score">0</span></span>
+          <span>Computer: <span id="singleplayer-enemy-score">0</span></span>
+        </div>
+      </div>
+
+      <div class="row justify-content-center align-items-center">
+        <div class="choices col-12">
+          <div class="choice" id="singleplayer-rock">
+            <i class="fas fa-hand-rock"></i>
+          </div>
+          <div class="choice" id="singleplayer-paper">
+            <i class="fas fa-hand-paper"></i>
+          </div>
+          <div class="choice" id="singleplayer-scissor">
+            <i class="fas fa-hand-scissors"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="message-after-choice-selection" id="singleplayer-win-message">
+      </div>
+
+      <div class="singleplayer-footer">
+        <button type="button" class="btn btn-dark bg-custom" id="singleplayer-exit-btn">Exit</button>
+      </div>
+
+    </div>
+
+    <div class="multiplayer-screen">
+      <div class="wait-message" id="wait-message">
+        <p>Waiting for another player to join...</p>
+      </div>
+
+      <div class="connected-players">
+        <div class="player">
+          <span class="dot" id="player-1"></span> <span id="player-1-tag"></span>
+        </div>
+
+        <div class="player">
+          <span class="dot" id="player-2"></span> <span id="player-2-tag"></span>
+        </div>
+      </div>
+
+      <div class="score">
+        <span>You: <span id="my-score">0</span></span>
+        <span>Enemy: <span id="enemy-score">0</span></span>
+      </div>
+
+      <div class="choices">
+        <div class="choice" id="rock">
+          <i class="fas fa-hand-rock"></i>
+        </div>
+
+        <div class="choice" id="paper">
+          <i class="fas fa-hand-paper"></i>
+        </div>
+
+        <div class="choice" id="scissor">
+          <i class="fas fa-hand-scissors"></i>
+        </div>
+      </div>
+
+      <div class="message-after-choice-selection" id="win-message">
+      </div>
+    </div>
+    
+  </section>
+
+  <footer class="bg-image-full fixed-bottom text-center text-lg-start">
+    <!-- Copyright -->
+    <div class="text-center text-light p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+      Created by:
+      <a class="text-light">Adam Zieba and Ryan Wilczak</a>
+    </div>
+    <!-- Copyright -->
+  </footer>
+
+  <div id="singleplayer-modal" class="modal fade" data-backdrop="static" tabindex="-1" role="dialog"
+    aria-labelledby="singleplayer-modal-label" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header bg-image-full">
+          <h5 class="modal-title text-light" id="singleplayer-game-result"></h5>
+        </div>
+        <div class="modal-body">
+          <h2>Would you like to play again?</h2>
+        </div>
+        <div class="modal-footer bg-image-full">
+          <button type="button" id="singleplayer-playagain-btn" class="btn btn-dark bg-custom">Yes</button>
+          <button type="button" id="singleplayer-leave-btn" class="btn btn-dark bg-custom-dark">No</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="multiplayer-modal" class="modal fade" data-backdrop="static" tabindex="-1" role="dialog"
+    aria-labelledby="multiplayer-modal-label" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header bg-image-full">
+          <h5 class="modal-title text-light" id="multiplayer-game-result"></h5>
+        </div>
+        <div class="modal-body">
+          <h2>Returning to the menu...</h2>
+        </div>
+        <div class="modal-footer bg-image-full">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="js/index.js "></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
